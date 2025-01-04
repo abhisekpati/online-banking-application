@@ -1,0 +1,18 @@
+# Ignore node_modules in the root, client, and server directories
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Ignore build artifacts for React app (if applicable)
+client/build/
+
+# Ignore .env files (to keep sensitive data secret)
+*.env
+
+# Ignore logs
+*.log
+
+# Ignore system files (e.g., MacOS, VSCode, etc.)
+.DS_Store
+.vscode/
+
