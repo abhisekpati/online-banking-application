@@ -16,3 +16,5 @@ client/build/
 .DS_Store
 .vscode/
 
+
+.env
