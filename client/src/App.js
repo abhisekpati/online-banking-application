@@ -1,15 +1,20 @@
-// client/src/App.js
+// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './components/Login'; // Import Login component
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './components/Login';
+import Register from './components/Register';
+import Dashboard from './components/Dashboard';
 
 const App = () => {
   return (
-    <Router> {/* Wrap everything inside Router */}
-      <div className="App">
+    <Router>
+      <div>
+        <h1>Online Banking Application</h1>
         <Routes>
-          {/* Define the route for the Login page */}
-          <Route path="/" element={<Login />} /> 
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
     </Router>
@@ -17,4 +22,5 @@ const App = () => {
 };
 
 export default App;
+
 

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../api';
+import { registerUser } from '../api';
 
-const Login = () => {
+const Register = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -12,19 +13,25 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const data = await loginUser({ email, password });
-      localStorage.setItem('token', data.token); // Store the JWT token
-      navigate('/dashboard'); // Redirect to dashboard
+      await registerUser({ name, email, password });
+      navigate('/login'); // Redirect to login after successful registration
     } catch (error) {
-      setError('Login failed. Please check your credentials.');
+      setError('Registration failed. Please try again.');
     }
   };
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2>Register</h2>
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Full Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
         <input
           type="email"
           placeholder="Email"
@@ -39,11 +46,11 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
 };
 
-export default Login;
+export default Register;
 
